@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Cart - Used Kids Toys and More</title>
+    <meta name="description" content="View and manage your shopping cart at Used Kids Toys and More.">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/premium-theme.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="images/logo.png" alt="Used Kids Toys and More" class="logo-image">
+            </a>
+            <button id="nav-toggle" class="mobile-nav-toggle">Menu</button>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="products.html">Shop</a>
+                <a href="cart.html">Cart <span id="cart-count" class="cart-count">0</span></a>
+                <a href="wishlist.html">Wishlist</a>
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+    
+    <main class="container">
+        <div class="breadcrumbs">
+            <a href="index.html">Home</a>
+            <span class="separator">/</span>
+            <span class="current">Cart</span>
+        </div>
+        
+        <h1>Your Shopping Cart</h1>
+        
+        <div class="cart-layout">
+            <!-- Left Column: Cart Items -->
+            <div class="cart-items-section">
+                <div class="cart-header">
+                    <h2>Cart Items</h2>
+                    <button id="clear-cart" class="btn btn-sm btn-danger">
+                        <i class="fas fa-trash"></i> Clear Cart
+                    </button>
+                </div>
+                
+                <div id="cart-items" class="cart-items-list">
+                    <!-- Cart items will be loaded via JavaScript -->
+                    <div class="loading">Loading cart...</div>
+                </div>
+                
+                <div class="cart-actions">
+                    <a href="products.html" class="btn btn-secondary">
+                        <i class="fas fa-arrow-left"></i> Continue Shopping
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Right Column: Order Summary -->
+            <div class="cart-summary-section">
+                <div class="cart-summary-card">
+                    <h2>Order Summary</h2>
+                    
+                    <div class="summary-item">
+                        <span>Subtotal</span>
+                        <span id="cart-subtotal">£0.00</span>
+                    </div>
+                    
+                    <div class="summary-item">
+                        <span>Shipping</span>
+                        <span id="cart-shipping">£3.99</span>
+                    </div>
+                    
+                    <div class="summary-item discount">
+                        <span>Discount</span>
+                        <span id="cart-discount">-£0.00</span>
+                    </div>
+                    
+                    <div class="summary-item total">
+                        <span>Total</span>
+                        <span id="cart-total">£0.00</span>
+                    </div>
+                    
+                    <div class="promo-code-section">
+                        <div class="promo-input-group">
+                            <input type="text" id="promo-code" placeholder="Enter promo code" class="promo-input">
+                            <button id="apply-promo" class="btn btn-sm">Apply</button>
+                        </div>
+                        <div id="promo-message" class="promo-message"></div>
+                    </div>
+                    
+                    <button id="checkout-btn" class="btn btn-lg btn-primary">
+                        <i class="fas fa-lock"></i> Proceed to Checkout
+                    </button>
+                    
+                    <div class="payment-methods">
+                        <p>Secure Payment Methods:</p>
+                        <div class="payment-icons">
+                            <i class="fab fa-cc-visa"></i>
+                            <i class="fab fa-cc-mastercard"></i>
+                            <i class="fab fa-cc-paypal"></i>
+                            <i class="fab fa-cc-apple-pay"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Checkout Form (Hidden by default) -->
+        <div id="checkout-form" class="checkout-section hidden">
+            <div class="checkout-header">
+                <h2>Checkout</h2>
+                <button id="back-to-cart" class="btn btn-sm btn-secondary">
+                    <i class="fas fa-arrow-left"></i> Back to Cart
+                </button>
+            </div>
+            
+            <div class="checkout-layout">
+                <!-- Left Column: Shipping & Billing -->
+                <div class="checkout-form-section">
+                    <form id="payment-form">
+                        <div class="form-section">
+                            <h3>Shipping Information</h3>
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label for="name">Full Name</label>
+                                    <input type="text" id="name" name="name" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="email">Email Address</label>
+                                    <input type="email" id="email" name="email" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="phone">Phone Number</label>
+                                    <input type="tel" id="phone" name="phone" required>
+                                </div>
+                                
+                                <div class="form-group full-width">
+                                    <label for="address">Shipping Address</label>
+                                    <textarea id="address" name="address" rows="3" required></textarea>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="city">City</label>
+                                    <input type="text" id="city" name="city" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="postcode">Postcode</label>
+                                    <input type="text" id="postcode" name="postcode" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="country">Country</label>
+                                    <select id="country" name="country" required>
+                                        <option value="">Select Country</option>
+                                        <option value="UK">United Kingdom</option>
+                                        <option value="US">United States</option>
+                                        <option value="CA">Canada</option>
+                                        <option value="AU">Australia</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-section">
+                            <h3>Payment Information</h3>
+                            <div class="form-grid">
+                                <div class="form-group full-width">
+                                    <label for="card-number">Card Number</label>
+                                    <input type="text" id="card-number" name="card-number" placeholder="1234 5678 9012 3456" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="card-expiry">Expiry Date</label>
+                                    <input type="text" id="card-expiry" name="card-expiry" placeholder="MM/YY" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="card-cvc">CVC</label>
+                                    <input type="text" id="card-cvc" name="card-cvc" placeholder="123" required>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-section">
+                            <div class="form-group checkbox">
+                                <label>
+                                    <input type="checkbox" name="save-info" id="save-info">
+                                    Save my information for faster checkout next time
+                                </label>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-lg btn-primary">
+                                <i class="fas fa-lock"></i> Place Order
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                
+                <!-- Right Column: Order Summary -->
+                <div class="checkout-summary-section">
+                    <div class="checkout-summary-card">
+                        <h3>Order Summary</h3>
+                        <div id="checkout-items">
+                            <!-- Order items will be loaded here -->
+                        </div>
+                        
+                        <div class="summary-totals">
+                            <div class="summary-item">
+                                <span>Subtotal</span>
+                                <span id="checkout-subtotal">£0.00</span>
+                            </div>
+                            <div class="summary-item">
+                                <span>Shipping</span>
+                                <span id="checkout-shipping">£3.99</span>
+                            </div>
+                            <div class="summary-item discount">
+                                <span>Discount</span>
+                                <span id="checkout-discount">-£0.00</span>
+                            </div>
+                            <div class="summary-item total">
+                                <span>Total</span>
+                                <span id="checkout-total">£0.00</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Order Confirmation (Hidden by default) -->
+        <div id="order-confirmation" class="order-confirmation-section hidden">
+            <div class="order-success-card">
+                <div class="success-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <h2>Order Confirmed!</h2>
+                <div class="order-details">
+                    <p>Thank you for your order. Your order number is <strong id="order-number"></strong>.</p>
+                    <p>We'll send a confirmation email to <strong id="order-email"></strong> shortly.</p>
+                    <p>Your toys will be packed with care and dispatched soon.</p>
+                </div>
+                <div class="order-actions">
+                    <a href="products.html" class="btn btn-primary">
+                        <i class="fas fa-shopping-cart"></i> Continue Shopping
+                    </a>
+                    <a href="orders.html" class="btn btn-secondary">
+                        <i class="fas fa-box"></i> View Your Orders
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Related Products Section -->
+        <div class="related-products-section">
+            <h2>You Might Also Like</h2>
+            <div class="grid" id="related-products">
+                <!-- Related products will be loaded via JavaScript -->
+            </div>
+        </div>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>Used Kids Toys</h3>
+                    <p>Quality pre-owned toys for children of all ages.</p>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Shop</h3>
+                    <ul>
+                        <li><a href="products.html?category=1">Dolls & Figurines</a></li>
+                        <li><a href="products.html?category=2">Puzzles & Games</a></li>
+                        <li><a href="products.html?category=3">Educational Toys</a></li>
+                        <li><a href="products.html?category=4">Outdoor Toys</a></li>
+                        <li><a href="products.html">All Products</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Information</h3>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="delivery.html">Delivery Information</a></li>
+                        <li><a href="returns.html">Returns Policy</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms & Conditions</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact</h3>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> info@usedkidstoys.com</li>
+                        <li><i class="fas fa-phone"></i> 0123 456 789</li>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Toy Street, London, UK</li>
+                    </ul>
+                    <div class="payment-methods">
+                        <i class="fab fa-cc-visa"></i>
+                        <i class="fab fa-cc-mastercard"></i>
+                        <i class="fab fa-cc-paypal"></i>
+                        <i class="fab fa-cc-apple-pay"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2025 Used Kids Toys and More. All rights reserved.
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Toast Container -->
+    <div id="toast-container" class="toast-container"></div>
+    
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="back-to-top" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+    
+    <script src="js/main.js"></script>
+    <script src="js/animations.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load cart
+            loadCart();
+            
+            // Setup checkout button
+            const checkoutBtn = document.getElementById('checkout-btn');
+            checkoutBtn.addEventListener('click', function() {
+                // Hide cart container
+                document.getElementById('cart-container').style.display = 'none';
+                
+                // Show checkout form
+                document.getElementById('checkout-form').style.display = 'block';
+                
+                // Scroll to top of checkout form
+                window.scrollTo({
+                    top: document.getElementById('checkout-form').offsetTop - 100,
+                    behavior: 'smooth'
+                });
+            });
+            
+            // Setup back to cart button
+            const backToCartBtn = document.getElementById('back-to-cart');
+            backToCartBtn.addEventListener('click', function() {
+                // Show cart container
+                document.getElementById('cart-container').style.display = 'block';
+                
+                // Hide checkout form
+                document.getElementById('checkout-form').style.display = 'none';
+            });
+            
+            // Setup payment form submission
+            const paymentForm = document.getElementById('payment-form');
+            paymentForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Show loading state
+                const submitBtn = this.querySelector('button[type="submit"]');
+                const originalText = submitBtn.textContent;
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+                
+                // Get form data
+                const formData = new FormData(paymentForm);
+                
+                // Convert FormData to object
+                const data = {};
+                formData.forEach((value, key) => {
+                    data[key] = value;
+                });
+                
+                // Simulate API call with timeout
+                setTimeout(() => {
+                    // Generate random order ID
+                    const orderId = 'ORD-' + Math.floor(Math.random() * 1000000);
+                    
+                    // Hide checkout form
+                    document.getElementById('checkout-form').style.display = 'none';
+                    
+                    // Set order details
+                    document.getElementById('order-number').textContent = orderId;
+                    document.getElementById('order-email').textContent = document.getElementById('email').value;
+                    
+                    // Show order confirmation
+                    document.getElementById('order-confirmation').style.display = 'block';
+                    
+                    // Clear cart
+                    localStorage.setItem('cart', JSON.stringify([]));
+                    
+                    // Update cart count
+                    updateCartCount();
+                    
+                    // Reset button state
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = originalText;
+                    
+                    // Scroll to top of confirmation
+                    window.scrollTo({
+                        top: document.getElementById('order-confirmation').offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }, 2000);
+            });
+            
+            // Setup promo code
+            const applyPromoBtn = document.getElementById('apply-promo');
+            if (applyPromoBtn) {
+                applyPromoBtn.addEventListener('click', function() {
+                    const promoCode = document.getElementById('promo-code').value.trim();
+                    
+                    if (!promoCode) {
+                        showToast('error', 'Error', 'Please enter a promo code');
+                        return;
+                    }
+                    
+                    // Check if valid promo code (for demo, we'll accept "WELCOME10")
+                    if (promoCode.toUpperCase() === 'WELCOME10') {
+                        // Apply 10% discount
+                        const subtotal = parseFloat(document.getElementById('cart-subtotal').textContent.replace('£', ''));
+                        const discount = subtotal * 0.1;
+                        const newTotal = subtotal - discount + 3.99; // Add shipping
+                        
+                        document.getElementById('cart-total').textContent = `£${newTotal.toFixed(2)}`;
+                        
+                        // Add discount line
+                        const discountElement = document.createElement('div');
+                        discountElement.className = 'cart-discount';
+                        discountElement.innerHTML = `<span>Discount (10%):</span> <span>-£${discount.toFixed(2)}</span>`;
+                        
+                        // Insert before total
+                        const totalElement = document.querySelector('.cart-total');
+                        totalElement.parentNode.insertBefore(discountElement, totalElement);
+                        
+                        // Disable promo code input
+                        document.getElementById('promo-code').disabled = true;
+                        applyPromoBtn.disabled = true;
+                        
+                        showToast('success', 'Promo Applied', '10% discount applied to your order');
+                    } else {
+                        showToast('error', 'Invalid Code', 'The promo code you entered is invalid');
+                    }
+                });
+            }
+            
+            // Load related products
+            loadRelatedProducts();
+        });
+        
+        function loadRelatedProducts() {
+            const relatedProductsContainer = document.getElementById('related-products');
+            if (!relatedProductsContainer) return;
+            
+            // Fetch random products (for demo purposes)
+            fetch('php/products.php?limit=4&random=true')
+                .then(response => response.json())
+                .then(products => {
+                    relatedProductsContainer.innerHTML = '';
+                    
+                    products.forEach(product => {
+                        relatedProductsContainer.innerHTML += `
+                            <div class="product">
+                                <div class="product-image-container">
+                                    <img src="images/${product.image}" alt="${product.name}">
+                                    <button class="wishlist-icon" data-id="${product.id}">
+                                        <i class="far fa-heart"></i>
+                                    </button>
+                                </div>
+                                <div class="product-info">
+                                    <h3>${product.name}</h3>
+                                    <div class="price">£${parseFloat(product.price).toFixed(2)}</div>
+                                    <a href="product-detail.html?id=${product.id}" class="btn">View Details</a>
+                                </div>
+                            </div>
+                        `;
+                    });
+                    
+                    // Setup product interactions
+                    setupProductInteractions();
+                })
+                .catch(error => {
+                    console.error('Error loading related products:', error);
+                    relatedProductsContainer.innerHTML = '';
+                });
+        }
+    </script>
+</body>
+</html>

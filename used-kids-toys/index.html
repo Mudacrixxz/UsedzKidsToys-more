@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Used Kids Toys and More - Quality Used Toys for Children</title>
+    <meta name="description" content="Shop high-quality used kids toys at affordable prices. Wide selection of dolls, puzzles, educational toys and more.">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/premium-theme.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <script src="js/animations.js" defer></script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="images/logo.png" alt="Used Kids Toys and More" sizes="" class="logo-image">
+            </a>
+            <button id="nav-toggle" class="mobile-nav-toggle">Menu</button>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="products.html">Shop</a>
+                <a href="cart.html">Cart <span id="cart-count" class="cart-count">0</span></a>
+                <a href="wishlist.html">Wishlist</a>
+                <a href="login.html" id="login-link">Login</a>
+                <a href="account.html" id="account-link" style="display:none;">My Account</a>
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+    
+    <section class="hero">
+        <div class="container">
+            <h1>Quality Toys at Affordable Prices</h1>
+            <p>Browse our collection of carefully selected pre-owned toys that bring joy without breaking the bank.</p>
+            <div class="hero-buttons">
+                <a href="products.html" class="btn btn-lg">Shop Now</a>
+                <a href="#featured-categories" class="btn btn-lg btn-secondary">Explore Categories</a>
+            </div>
+        </div>
+    </section>
+    
+    <section id="featured-categories" class="container">
+        <h2 class="text-center">Featured Categories</h2>
+        <div class="grid">
+            <div class="category">
+                <img src="images/category-dolls.jpg" alt="Dolls and Figurines">
+                <h3>Dolls & Figurines</h3>
+                <p>Classic dolls and action figures for imaginative play.</p>
+                <a href="products.html?category=1" class="btn">View All</a>
+            </div>
+            <div class="category">
+                <img src="images/category-puzzles.jpg" alt="Puzzles and Games">
+                <h3>Puzzles & Games</h3>
+                <p>Board games and puzzles for family fun time.</p>
+                <a href="products.html?category=2" class="btn">View All</a>
+            </div>
+            <div class="category">
+                <img src="images/category-educational.jpg" alt="Educational Toys">
+                <h3>Educational Toys</h3>
+                <p>Learning toys that make education fun and engaging.</p>
+                <a href="products.html?category=3" class="btn">View All</a>
+            </div>
+            <div class="category">
+                <img src="images/category-outdoor.jpg" alt="Outdoor Toys">
+                <h3>Outdoor Toys</h3>
+                <p>Toys for active play and outdoor adventures.</p>
+                <a href="products.html?category=4" class="btn">View All</a>
+            </div>
+        </div>
+    </section>
+    
+    <section class="container">
+        <div class="section-header">
+            <h2>Featured Products</h2>
+            <a href="products.html" class="btn btn-sm">View All Products</a>
+        </div>
+        <div id="featured-products" class="grid">
+            <!-- Products will be loaded via JavaScript -->
+            <div class="loading">Loading featured products...</div>
+        </div>
+    </section>
+    
+    <section class="newsletter">
+        <div class="container">
+            <h2>Join Our Newsletter</h2>
+            <p>Subscribe to receive updates on new arrivals, special offers and other discount information.</p>
+            <form class="newsletter-form">
+                <input type="email" placeholder="Your email address" required>
+                <button type="submit" class="btn btn-accent">Subscribe</button>
+            </form>
+        </div>
+    </section>
+    
+    <section class="container">
+        <h2 class="text-center">Why Choose Us?</h2>
+        <div class="features">
+            <div class="feature">
+                <i class="fas fa-check-circle fa-3x"></i>
+                <h3>Quality Assured</h3>
+                <p>Every toy is carefully inspected to ensure it meets our high standards.</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-leaf fa-3x"></i>
+                <h3>Sustainable Choice</h3>
+                <p>Buying pre-owned toys reduces waste and is better for the environment.</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-tag fa-3x"></i>
+                <h3>Affordable Prices</h3>
+                <p>Get more toys for your money with our budget-friendly options.</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-truck fa-3x"></i>
+                <h3>Fast Delivery</h3>
+                <p>Quick and reliable shipping to get toys to your door faster.</p>
+            </div>
+        </div>
+    </section>
+    
+    <section class="container">
+        <h2 class="text-center">Customer Testimonials</h2>
+        <div class="testimonials">
+            <div class="testimonial">
+                <div class="star-rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p>"I've been buying toys from Used Kids Toys for over a year now. The quality is always excellent and my children love them. It's like new toys at half the price!"</p>
+                <div class="testimonial-author">Sarah T., London</div>
+            </div>
+            <div class="testimonial">
+                <div class="star-rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <p>"As a grandparent on a budget, this shop has been a lifesaver. I can spoil my grandkids without breaking the bank. The toys are always clean and in great condition."</p>
+                <div class="testimonial-author">James M., Manchester</div>
+            </div>
+            <div class="testimonial">
+                <div class="star-rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p>"I love that I'm teaching my children about sustainability while giving them toys they love. The customer service is excellent and delivery is always prompt."</p>
+                <div class="testimonial-author">Emma L., Edinburgh</div>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>Used Kids Toys</h3>
+                    <p>Quality pre-owned toys for children of all ages.</p>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Shop</h3>
+                    <ul>
+                        <li><a href="products.html?category=1">Dolls & Figurines</a></li>
+                        <li><a href="products.html?category=2">Puzzles & Games</a></li>
+                        <li><a href="products.html?category=3">Educational Toys</a></li>
+                        <li><a href="products.html?category=4">Outdoor Toys</a></li>
+                        <li><a href="products.html">All Products</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Information</h3>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="delivery.html">Delivery Information</a></li>
+                        <li><a href="returns.html">Returns Policy</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms & Conditions</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact</h3>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> info@usedkidstoys.com</li>
+                        <li><i class="fas fa-phone"></i> 0123 456 789</li>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Toy Street, London, UK</li>
+                    </ul>
+                    <div class="payment-methods">
+                        <i class="fab fa-cc-visa"></i>
+                        <i class="fab fa-cc-mastercard"></i>
+                        <i class="fab fa-cc-paypal"></i>
+                        <i class="fab fa-cc-apple-pay"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2025 Used Kids Toys and More. All rights reserved.
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Toast Container -->
+    <div id="toast-container" class="toast-container"></div>
+    
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="back-to-top" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+    
+    <script src="js/main.js"></script>
+    <script>
+        // Check authentication status and update navigation
+        function checkAuthStatus() {
+            fetch('php/check-auth.php')
+                .then(response => response.json())
+                .then(data => {
+                    const loginLink = document.getElementById('login-link');
+                    const accountLink = document.getElementById('account-link');
+                    
+                    if (data.authenticated) {
+                        loginLink.style.display = 'none';
+                        accountLink.style.display = 'inline-block';
+                    } else {
+                        loginLink.style.display = 'inline-block';
+                        accountLink.style.display = 'none';
+                    }
+                })
+                .catch(error => {
+                    console.error('Authentication check error:', error);
+                });
+        }
+    
+        // Load featured products on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check auth status
+            checkAuthStatus();
+        
+            const featuredProducts = document.getElementById('featured-products');
+            
+            // Fetch featured products (for demo, we'll just get all products limited to 4)
+            fetch('php/products.php?limit=4')
+                .then(response => response.json())
+                .then(products => {
+                    featuredProducts.innerHTML = '';
+                    
+                    products.forEach(product => {
+                        featuredProducts.innerHTML += `
+                            <div class="product">
+                                <div class="product-image-container">
+                                    <img src="images/${product.image}" alt="${product.name}">
+                                    <button class="wishlist-icon" data-id="${product.id}">
+                                        <i class="far fa-heart"></i>
+                                    </button>
+                                </div>
+                                <div class="product-info">
+                                    <h3>${product.name}</h3>
+                                    <div class="condition">${product.condition}</div>
+                                    <div class="price">£${parseFloat(product.price).toFixed(2)}</div>
+                                    <div class="product-actions">
+                                        <a href="product-detail.html?id=${product.id}" class="btn">View Details</a>
+                                        <button class="btn btn-accent add-to-cart" data-id="${product.id}">
+                                            <i class="fas fa-shopping-cart"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                    });
+                    
+                    // Setup product interactions
+                    setupProductInteractions();
+                })
+                .catch(error => {
+                    console.error('Error loading featured products:', error);
+                    featuredProducts.innerHTML = '<div class="error">Error loading products. Please try again later.</div>';
+                });
+                
+            // Handle newsletter form submission
+            const newsletterForm = document.querySelector('.newsletter-form');
+            if (newsletterForm) {
+                newsletterForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const email = this.querySelector('input[type="email"]').value;
+                    
+                    // Here you would normally send this to your backend
+                    // For demo purposes, we'll just show a success message
+                    showToast('success', 'Subscribed!', `Thank you for subscribing with ${email}`);
+                    this.reset();
+                });
+            }
+        });
+    </script>
+</body>
+</html>

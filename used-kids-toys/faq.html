@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frequently Asked Questions - Used Kids Toys and More</title>
+    <meta name="description" content="Find answers to common questions about Used Kids Toys and More - shipping, returns, product condition, and more.">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/premium-theme.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="images/logo.png" alt="Used Kids Toys and More" class="logo-image">
+            </a>
+            <button id="nav-toggle" class="mobile-nav-toggle">Menu</button>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="products.html">Shop</a>
+                <a href="cart.html">Cart <span id="cart-count" class="cart-count">0</span></a>
+                <a href="wishlist.html">Wishlist</a>
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+    
+    <section class="page-header">
+        <div class="container">
+            <h1>Frequently Asked Questions</h1>
+        </div>
+    </section>
+    
+    <section class="faq-section container">
+        <div class="faq-search">
+            <h2>How can we help you?</h2>
+            <div class="search-container">
+                <input type="text" id="faq-search" placeholder="Search for questions...">
+                <button id="search-btn"><i class="fas fa-search"></i></button>
+            </div>
+        </div>
+        
+        <div class="faq-categories">
+            <button class="category-btn active" data-category="all">All Questions</button>
+            <button class="category-btn" data-category="orders">Orders & Payment</button>
+            <button class="category-btn" data-category="shipping">Shipping & Delivery</button>
+            <button class="category-btn" data-category="returns">Returns & Refunds</button>
+            <button class="category-btn" data-category="products">Product Information</button>
+            <button class="category-btn" data-category="account">Account & Privacy</button>
+        </div>
+        
+        <div class="faq-list">
+            <!-- Orders & Payment -->
+            <div class="faq-item" data-category="orders">
+                <div class="faq-question">
+                    <h3>How do I place an order?</h3>
+                    <span class="toggle-icon"><i class="fas fa-plus"></i></span>
+                </div>
+                <div class="faq-answer">
+                    <p>To place an order, simply browse our products, add items to your cart, and proceed to checkout. You'll need to provide shipping details and payment information to complete your purchase. Once your order is confirmed, you'll receive an order confirmation email.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item" data-category="orders">
+                <div class="faq-question">
+                    <h3>What payment methods do you accept?</h3>
+                    <span class="toggle-icon"><i class="fas fa-plus"></i></span>
+                </div>
+                <div class="faq-answer">
+                    <p>We accept the following payment methods:</p>
+                    <ul>
+                        <li>Credit/Debit Cards (Visa, Mastercard, American Express)</li>
+                        <li>PayPal</li>
+                        <li>Apple Pay</li>
+                    </ul>
+                    <p>All transactions are secure and encrypted for your protection.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item" data-category="orders">
+                <div class="faq-question">
+                    <h3>Can I modify or cancel my order after it's placed?</h3>
+                    <span class="toggle-icon"><i class="fas fa-plus"></i></span>
+                </div>
+                <div class="faq-answer">
+                    <p>You can modify or cancel your order within 1 hour of placing it, as long as it hasn't been processed for shipping. Please contact our customer service team as soon as possible at <a href="mailto:orders@usedkidstoys.com">orders@usedkidstoys.com</a> or call 0123 456 789.</p>
+                </div>
+            </div>
+            
+            <!-- Shipping & Delivery -->
+            <div class="faq-item" data-category="shipping">
+                <div class="faq-question">
+                    <h3>How long will it take to receive my order?</h3>
+                    <span class="toggle-icon"><i class="fas fa-plus"></i></span>
+                </div>
+                <div class="faq-answer">
+                    <p>Standard delivery typically takes 3-5 working days within the UK. Express delivery is available for 1-2 working days, and Next Day delivery is available for orders placed before 2pm (Monday-Friday, excluding holidays).</p>
+                    <p>You can find more detailed information on our <a href="delivery.html">Delivery Information</a> page.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item" data-category="shipping">
+                <div class="faq-question">
+                    <h3>Do you offer free shipping?</h3>
+                    <span class="toggle-icon"><i class="fas fa-plus"></i></span>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes, we offer free standard shipping on all orders over £50. For orders under this amount, standard shipping costs £3.99.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item" data-category="shipping">
+                <div class="faq-question">
+                    <h3>How can I track my order?</h3>
+                    <span class="toggle-icon"><i class="fas fa-plus"></i></span>
+                </div>
+                <div class="faq-answer">
+                    <p>Once your order has been dispatched, you'll receive an email with tracking information. You can also view the status of your order by logging into your account and visiting the "Order History" section.</p>
+                </div>
+            </div>
+            
+            <!-- Returns & Refunds -->
+            <div class="faq-item" data-category="returns">
+                <div class="faq-question">
+                    <h3>What is your returns policy?</h3>
+                    <span class="toggle-icon"><i class="fas fa-plus"></i></span>
+                </div>
+                <div class="faq-answer">
+                    <p>You can return any item within 14 days of receiving your order for a full refund or exchange, provided the item meets our return conditions. Please see our <a href="returns.html">Returns Policy</a> page for full details.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item" data-category="returns">
+                <div class="faq-question">
+                    <h3>How do I return an item?</h3>
+                    <span class="toggle-icon"><i class="fas fa-plus"></i></span>
+                </div>
+                <div class="faq-answer">
+                    <p>To initiate a return:</p>
+                    <ol>
+                        <li>Contact our customer service team at <a href="mailto:returns@usedkidstoys.com">returns@usedkidstoys.com</a> or call 0123 456 789 within 14 days of receiving your order.</li>
+                        <li>Provide your order number and details of the item(s) you wish to return, along with the reason.</li>
+                        <li>Our team will review your request and provide a Return Authorization Number and instructions.</li>
+                        <li>Package the item securely with all parts and accessories.</li>
+                        <li>Send the package to the address provided in the return instructions.</li>
+                    </ol>
+                </div>
+            </div>
+            
+            <div class="faq-item" data-category="returns">
+                <div class="faq-question">
+                    <h3>When will I receive my refund?</h3>
+                    <span class="toggle-icon"><i class="fas fa-plus"></i></span>
+                </div>
+                <div class="faq-answer">
+                    <p>Once we receive and inspect the returned item(s), your refund will be processed within 3-5 business days. The refund will be issued to the original payment method used for the purchase. Depending on your bank or credit card company, it may take an additional 5-10 business days for the refund to show on your account.</p>
+                </div>
+            </div>
+            
+            <!-- Product Information -->
+            <div class="faq-item" data-category="products">
+                <div class="faq-question">
+                    <h3>How do you determine the condition of toys?</h3>
+                    <span class="toggle-icon"><i class="fas fa-plus"></i></span>
+                </div>
+                <div class="faq-answer">
+                    <p>We have a rigorous inspection process for all toys. Our condition ratings are:</p>
+                    <ul>
+                        <li><strong>Like New:</strong> Appears unused, complete with all parts and original packaging.</li>
+                        <li><strong>Excellent:</strong> Minimal signs of use, all parts present, fully functional.</li>
+                        <li><strong>Very Good:</strong> Some signs of previous use, minor cosmetic marks, all essential parts present.</li>
+                        <li><strong>Good:</strong> Visible signs of use, may have minor defects that don't affect functionality.</li>
+                    </ul>
+                    <p>Each product listing includes detailed information about the condition of the specific item.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item" data-category="products">
+                <div class="faq-question">
+                    <h3>Are your toys cleaned and sanitized?</h3>
+                    <span class="toggle-icon"><i class="fas fa-plus"></i></span>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes, all toys undergo a thorough cleaning and sanitization process before being listed for sale. Our cleaning procedures vary based on the toy material but always include disinfection with child-safe products. Plush toys are cleaned using heat treatment methods, and plastic toys are cleaned with non-toxic disinfectants.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item" data-category="products">
+                <div class="faq-question">
+                    <h3>Do toys come with original packaging?</h3>
+                    <span class="toggle-icon"><i class="fas fa-plus"></i></span>
+                </div>
+                <div class="faq-answer">
+                    <p>It depends on the specific toy. Some items do come with their original packaging, while others may not. The product description will always specify whether original packaging is included. If original packaging is important to you, please check the product details carefully before purchasing.</p>
+                </div>
+            </div>
+            
+            <!-- Account & Privacy -->
+            <div class="faq-item" data-category="account">
+                <div class="faq-question">
+                    <h3>Do I need to create an account to make a purchase?</h3>
+                    <span class="toggle-icon"><i class="fas fa-plus"></i></span>
+                </div>
+                <div class="faq-answer">
+                    <p>While creating an account offers benefits like order tracking, saved addresses, and wishlist functionality, we also offer a guest checkout option. You can make purchases without creating an account, but you'll need to provide your shipping and payment details for each order.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item" data-category="account">
+                <div class="faq-question">
+                    <h3>How is my personal information handled?</h3>
+                    <span class="toggle-icon"><i class="fas fa-plus"></i></span>
+                </div>
+                <div class="faq-answer">
+                    <p>We take your privacy seriously and comply with all applicable data protection regulations. Your personal information is used solely for processing orders, improving your shopping experience, and communicating with you about your purchases. We never sell your data to third parties.</p>
+                    <p>For complete details, please review our <a href="privacy.html">Privacy Policy</a>.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item" data-category="account">
+                <div class="faq-question">
+                    <h3>How can I subscribe to or unsubscribe from your newsletter?</h3>
+                    <span class="toggle-icon"><i class="fas fa-plus"></i></span>
+                </div>
+                <div class="faq-answer">
+                    <p>You can subscribe to our newsletter by entering your email in the subscription box on our homepage. To unsubscribe, simply click the "Unsubscribe" link at the bottom of any newsletter email we send you, or contact our customer service team at <a href="mailto:info@usedkidstoys.com">info@usedkidstoys.com</a>.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div id="no-results" class="no-results" style="display: none;">
+            <p>No questions match your search. Please try different keywords or <a href="contact.html">contact us</a> directly.</p>
+        </div>
+    </section>
+    
+    <section class="contact-cta container">
+        <h2>Still Have Questions?</h2>
+        <p>If you couldn't find the answer to your question, our customer service team is here to help.</p>
+        <div class="cta-buttons">
+            <a href="contact.html" class="btn btn-lg">Contact Us</a>
+            <a href="tel:01234567890" class="btn btn-lg btn-secondary"><i class="fas fa-phone"></i> Call Us</a>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>Used Kids Toys</h3>
+                    <p>Quality pre-owned toys for children of all ages.</p>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Shop</h3>
+                    <ul>
+                        <li><a href="products.html?category=1">Dolls & Figurines</a></li>
+                        <li><a href="products.html?category=2">Puzzles & Games</a></li>
+                        <li><a href="products.html?category=3">Educational Toys</a></li>
+                        <li><a href="products.html?category=4">Outdoor Toys</a></li>
+                        <li><a href="products.html">All Products</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Information</h3>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="delivery.html">Delivery Information</a></li>
+                        <li><a href="returns.html">Returns Policy</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms & Conditions</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact</h3>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> info@usedkidstoys.com</li>
+                        <li><i class="fas fa-phone"></i> 0123 456 789</li>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Toy Street, London, UK</li>
+                    </ul>
+                    <div class="payment-methods">
+                        <i class="fab fa-cc-visa"></i>
+                        <i class="fab fa-cc-mastercard"></i>
+                        <i class="fab fa-cc-paypal"></i>
+                        <i class="fab fa-cc-apple-pay"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2025 Used Kids Toys and More. All rights reserved.
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Toast Container -->
+    <div id="toast-container" class="toast-container"></div>
+    
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="back-to-top" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+    
+    <script src="js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // FAQ accordion functionality
+            const faqQuestions = document.querySelectorAll('.faq-question');
+            
+            faqQuestions.forEach(question => {
+                question.addEventListener('click', function() {
+                    const answer = this.nextElementSibling;
+                    const icon = this.querySelector('.toggle-icon i');
+                    
+                    // Toggle active class
+                    this.classList.toggle('active');
+                    
+                    // Toggle answer visibility
+                    if (answer.style.maxHeight) {
+                        answer.style.maxHeight = null;
+                        icon.classList.replace('fa-minus', 'fa-plus');
+                    } else {
+                        answer.style.maxHeight = answer.scrollHeight + 'px';
+                        icon.classList.replace('fa-plus', 'fa-minus');
+                    }
+                });
+            });
+            
+            // Category filtering
+            const categoryButtons = document.querySelectorAll('.category-btn');
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            categoryButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const category = this.dataset.category;
+                    
+                    // Remove active class from all buttons
+                    categoryButtons.forEach(btn => btn.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    // Show/hide FAQ items based on category
+                    faqItems.forEach(item => {
+                        if (category === 'all' || item.dataset.category === category) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                            
+                            // Close any open answers
+                            const question = item.querySelector('.faq-question');
+                            const answer = item.querySelector('.faq-answer');
+                            const icon = question.querySelector('.toggle-icon i');
+                            
+                            if (question.classList.contains('active')) {
+                                question.classList.remove('active');
+                                answer.style.maxHeight = null;
+                                icon.classList.replace('fa-minus', 'fa-plus');
+                            }
+                        }
+                    });
+                    
+                    // Check if any items are visible
+                    checkNoResults();
+                });
+            });
+            
+            // Search functionality
+            const searchInput = document.getElementById('faq-search');
+            const searchBtn = document.getElementById('search-btn');
+            const noResults = document.getElementById('no-results');
+            
+            function performSearch() {
+                const searchTerm = searchInput.value.toLowerCase();
+                
+                if (searchTerm === '') {
+                    // Reset to show all or current category
+                    const activeCategory = document.querySelector('.category-btn.active').dataset.category;
+                    
+                    faqItems.forEach(item => {
+                        if (activeCategory === 'all' || item.dataset.category === activeCategory) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                    
+                    noResults.style.display = 'none';
+                    return;
+                }
+                
+                let hasResults = false;
+                
+                faqItems.forEach(item => {
+                    const question = item.querySelector('.faq-question h3').textContent.toLowerCase();
+                    const answer = item.querySelector('.faq-answer').textContent.toLowerCase();
+                    const activeCategory = document.querySelector('.category-btn.active').dataset.category;
+                    
+                    if ((question.includes(searchTerm) || answer.includes(searchTerm)) && 
+                        (activeCategory === 'all' || item.dataset.category === activeCategory)) {
+                        item.style.display = 'block';
+                        hasResults = true;
+                    } else {
+                        item.style.display = 'none';
+                        
+                        // Close any open answers
+                        const questionEl = item.querySelector('.faq-question');
+                        const answerEl = item.querySelector('.faq-answer');
+                        const icon = questionEl.querySelector('.toggle-icon i');
+                        
+                        if (questionEl.classList.contains('active')) {
+                            questionEl.classList.remove('active');
+                            answerEl.style.maxHeight = null;
+                            icon.classList.replace('fa-minus', 'fa-plus');
+                        }
+                    }
+                });
+                
+                noResults.style.display = hasResults ? 'none' : 'block';
+            }
+            
+            searchBtn.addEventListener('click', performSearch);
+            
+            searchInput.addEventListener('keyup', function(e) {
+                if (e.key === 'Enter') {
+                    performSearch();
+                }
+            });
+            
+            function checkNoResults() {
+                const searchTerm = searchInput.value.toLowerCase();
+                if (searchTerm === '') return;
+                
+                const activeCategory = document.querySelector('.category-btn.active').dataset.category;
+                let hasVisibleItems = false;
+                
+                faqItems.forEach(item => {
+                    if (item.style.display !== 'none' && 
+                        (activeCategory === 'all' || item.dataset.category === activeCategory)) {
+                        hasVisibleItems = true;
+                    }
+                });
+                
+                noResults.style.display = hasVisibleItems ? 'none' : 'block';
+            }
+            
+            // Update cart count on page load
+            function updateCartCount() {
+                const cart = JSON.parse(localStorage.getItem('cart')) || [];
+                const cartCount = document.getElementById('cart-count');
+                
+                if (cartCount) {
+                    const totalItems = cart.reduce((total, item) => total + (item.quantity || 0), 0);
+                    cartCount.textContent = totalItems;
+                }
+            }
+            
+            // Initialize cart count
+            updateCartCount();
+        });
+    </script>
+</body>
+</html> 

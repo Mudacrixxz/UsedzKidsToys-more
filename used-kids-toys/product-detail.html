@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details - Used Kids Toys and More</title>
+    <meta name="description" content="View detailed information about our quality used toys for children.">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/premium-theme.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="images/logo.png" alt="Used Kids Toys and More" class="logo-image">
+            </a>
+            <button id="nav-toggle" class="mobile-nav-toggle">Menu</button>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="products.html">Shop</a>
+                <a href="cart.html">Cart <span id="cart-count" class="cart-count">0</span></a>
+                <a href="wishlist.html">Wishlist</a>
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+    
+    <section class="container">
+        <div id="breadcrumbs" class="breadcrumbs">
+            <a href="index.html">Home</a>
+            <span class="separator">/</span>
+            <a href="products.html">Shop</a>
+            <span class="separator">/</span>
+            <span class="current" id="product-name-breadcrumb">Product Details</span>
+        </div>
+        
+        <div id="product-detail-container">
+            <div class="loading">Loading product details...</div>
+        </div>
+        
+        <!-- Product tabs -->
+        <div class="product-tabs">
+            <div class="tab-buttons">
+                <button class="tab-button active" data-tab="description">Description</button>
+                <button class="tab-button" data-tab="details">Details</button>
+                <button class="tab-button" data-tab="reviews">Reviews</button>
+            </div>
+            
+            <div class="tab-content">
+                <div class="tab-panel active" id="description-tab">
+                    <div id="product-description">
+                        <!-- Product description will be loaded here -->
+                    </div>
+                </div>
+                
+                <div class="tab-panel" id="details-tab">
+                    <div id="product-details">
+                        <!-- Product details will be loaded here -->
+                    </div>
+                </div>
+                
+                <div class="tab-panel" id="reviews-tab">
+                    <div id="product-reviews">
+                        <!-- Product reviews will be loaded here -->
+                        <div class="reviews-summary">
+                            <div class="average-rating">
+                                <div class="rating-number">4.5</div>
+                                <div class="star-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                </div>
+                                <div class="rating-count">Based on 12 reviews</div>
+                            </div>
+                            
+                            <button class="btn" id="write-review-btn">Write a Review</button>
+                        </div>
+                        
+                        <div class="reviews-list">
+                            <!-- Reviews will be loaded here -->
+                        </div>
+                        
+                        <!-- Review form (hidden by default) -->
+                        <div id="review-form" class="hidden">
+                            <h3>Write a Review</h3>
+                            <form id="new-review-form">
+                                <div class="form-group">
+                                    <label for="review-name">Your Name:</label>
+                                    <input type="text" id="review-name" name="name" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="review-email">Email Address:</label>
+                                    <input type="email" id="review-email" name="email" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label>Rating:</label>
+                                    <div class="rating-input">
+                                        <i class="far fa-star" data-rating="1"></i>
+                                        <i class="far fa-star" data-rating="2"></i>
+                                        <i class="far fa-star" data-rating="3"></i>
+                                        <i class="far fa-star" data-rating="4"></i>
+                                        <i class="far fa-star" data-rating="5"></i>
+                                    </div>
+                                    <input type="hidden" id="review-rating" name="rating" value="0" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="review-title">Review Title:</label>
+                                    <input type="text" id="review-title" name="title" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="review-content">Your Review:</label>
+                                    <textarea id="review-content" name="content" rows="5" required></textarea>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <button type="submit" class="btn">Submit Review</button>
+                                    <button type="button" class="btn btn-secondary" id="cancel-review">Cancel</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Recently viewed products -->
+        <div id="recently-viewed" class="recently-viewed">
+            <h2>Recently Viewed</h2>
+            <div class="grid" id="recently-viewed-products">
+                <!-- Recently viewed products will be loaded here -->
+            </div>
+        </div>
+        
+        <!-- Related products -->
+        <div class="related-products">
+            <h2>You Might Also Like</h2>
+            <div class="grid" id="related-products">
+                <!-- Related products will be loaded here -->
+            </div>
+        </div>
+    </section>
+    
+    <!-- Newsletter -->
+    <section class="newsletter">
+        <div class="container">
+            <h2>Join Our Newsletter</h2>
+            <p>Subscribe to receive updates on new arrivals, special offers and other discount information.</p>
+            <form class="newsletter-form">
+                <input type="email" placeholder="Your email address" required>
+                <button type="submit" class="btn btn-accent">Subscribe</button>
+            </form>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>Used Kids Toys</h3>
+                    <p>Quality pre-owned toys for children of all ages.</p>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Shop</h3>
+                    <ul>
+                        <li><a href="products.html?category=1">Dolls & Figurines</a></li>
+                        <li><a href="products.html?category=2">Puzzles & Games</a></li>
+                        <li><a href="products.html?category=3">Educational Toys</a></li>
+                        <li><a href="products.html?category=4">Outdoor Toys</a></li>
+                        <li><a href="products.html">All Products</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Information</h3>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="delivery.html">Delivery Information</a></li>
+                        <li><a href="returns.html">Returns Policy</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms & Conditions</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact</h3>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> info@usedkidstoys.com</li>
+                        <li><i class="fas fa-phone"></i> 0123 456 789</li>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Toy Street, London, UK</li>
+                    </ul>
+                    <div class="payment-methods">
+                        <i class="fab fa-cc-visa"></i>
+                        <i class="fab fa-cc-mastercard"></i>
+                        <i class="fab fa-cc-paypal"></i>
+                        <i class="fab fa-cc-apple-pay"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2025 Used Kids Toys and More. All rights reserved.
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Toast Container -->
+    <div id="toast-container" class="toast-container"></div>
+    
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="back-to-top" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+    
+    <script src="js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get product ID from URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const productId = urlParams.get('id');
+            
+            if (!productId) {
+                // Redirect to products page if no ID provided
+                window.location.href = 'products.html';
+                return;
+            }
+            
+            // Load product details
+            loadProductDetails(productId);
+            
+            // Setup tabs
+            setupTabs();
+            
+            // Setup review form
+            setupReviewForm();
+            
+            // Load related products
+            loadRelatedProducts();
+            
+            // Handle newsletter form submission
+            const newsletterForm = document.querySelector('.newsletter-form');
+            if (newsletterForm) {
+                newsletterForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const email = this.querySelector('input[type="email"]').value;
+                    
+                    // Here you would normally send this to your backend
+                    // For demo purposes, we'll just show a success message
+                    showToast('success', 'Subscribed!', `Thank you for subscribing with ${email}`);
+                    this.reset();
+                });
+            }
+        });
+        
+        function loadProductDetails(productId) {
+            const productDetailContainer = document.getElementById('product-detail-container');
+            
+            // Fetch product details
+            fetch(`php/products.php?id=${productId}`)
+                .then(response => response.json())
+                .then(product => {
+                    if (!product) {
+                        productDetailContainer.innerHTML = '<div class="error">Product not found</div>';
+                        return;
+                    }
+                    
+                    // Update page title
+                    document.title = `${product.name} - Used Kids Toys and More`;
+                    
+                    // Update breadcrumb
+                    document.getElementById('product-name-breadcrumb').textContent = product.name;
+                    
+                    // Render product details
+                    productDetailContainer.innerHTML = `
+                        <div class="product-detail">
+                            <div class="product-gallery">
+                                <div class="gallery-main">
+                                    <img src="images/${product.image}" alt="${product.name}">
+                                </div>
+                                <div class="gallery-thumbnails">
+                                    <div class="gallery-thumbnail active">
+                                        <img src="images/${product.image}" alt="${product.name}">
+                                    </div>
+                                    <div class="gallery-thumbnail">
+                                        <img src="images/${product.image.replace('.jpg', '-2.jpg')}" alt="${product.name} - View 2">
+                                    </div>
+                                    <div class="gallery-thumbnail">
+                                        <img src="images/${product.image.replace('.jpg', '-3.jpg')}" alt="${product.name} - View 3">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <h1>${product.name}</h1>
+                                <div class="product-meta">
+                                    <div class="condition">${product.condition}</div>
+                                    <div class="star-rating">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star-half-alt"></i>
+                                        <span>(12 reviews)</span>
+                                    </div>
+                                </div>
+                                <div class="price">£${parseFloat(product.price).toFixed(2)}</div>
+                                <div class="stock-status ${product.stock > 0 ? 'in-stock' : 'out-of-stock'}">
+                                    ${product.stock > 0 ? `In Stock (${product.stock} available)` : 'Out of Stock'}
+                                </div>
+                                <div class="product-actions">
+                                    <div class="quantity-control">
+                                        <button class="quantity-btn decrease">-</button>
+                                        <input type="number" class="quantity-input" value="1" min="1" max="${product.stock}">
+                                        <button class="quantity-btn increase">+</button>
+                                    </div>
+                                    <button class="btn btn-lg add-to-cart" data-id="${product.id}" ${product.stock <= 0 ? 'disabled' : ''}>
+                                        <i class="fas fa-shopping-cart"></i> Add to Cart
+                                    </button>
+                                    <button class="wishlist-button" data-id="${product.id}">
+                                        <i class="far fa-heart"></i> Add to Wishlist
+                                    </button>
+                                </div>
+                                <div class="product-short-description">
+                                    <p>${product.description.substring(0, 150)}...</p>
+                                </div>
+                                <div class="product-meta-info">
+                                    <div class="meta-item">
+                                        <span class="meta-label">Category:</span>
+                                        <a href="products.html?category=${product.category_id}">${getCategoryName(product.category_id)}</a>
+                                    </div>
+                                    <div class="meta-item">
+                                        <span class="meta-label">Age Range:</span>
+                                        <span>3-8 years</span>
+                                    </div>
+                                    <div class="meta-item">
+                                        <span class="meta-label">SKU:</span>
+                                        <span>TOY-${product.id}</span>
+                                    </div>
+                                </div>
+                                <div class="social-share">
+                                    <span>Share:</span>
+                                    <a href="#" aria-label="Share on Facebook"><i class="fab fa-facebook"></i></a>
+                                    <a href="#" aria-label="Share on Twitter"><i class="fab fa-twitter"></i></a>
+                                    <a href="#" aria-label="Share on Pinterest"><i class="fab fa-pinterest"></i></a>
+                                    <a href="#" aria-label="Share via Email"><i class="fas fa-envelope"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    
+                    // Populate tab content
+                    document.getElementById('product-description').innerHTML = `
+                        <div class="product-description">
+                            <p>${product.description}</p>
+                            <p>This toy has been carefully inspected and cleaned to ensure it meets our quality standards. It comes from a smoke-free, pet-free home and has been sanitized before listing.</p>
+                        </div>
+                    `;
+                    
+                    document.getElementById('product-details').innerHTML = `
+                        <div class="product-specifications">
+                            <h3>Product Specifications</h3>
+                            <table class="specs-table">
+                                <tr>
+                                    <th>Condition</th>
+                                    <td>${product.condition}</td>
+                                </tr>
+                                <tr>
+                                    <th>Age Range</th>
+                                    <td>3-8 years</td>
+                                </tr>
+                                <tr>
+                                    <th>Brand</th>
+                                    <td>Original Manufacturer</td>
+                                </tr>
+                                <tr>
+                                    <th>Materials</th>
+                                    <td>Plastic, Fabric</td>
+                                </tr>
+                                <tr>
+                                    <th>Dimensions</th>
+                                    <td>30cm x 20cm x 15cm</td>
+                                </tr>
+                                <tr>
+                                    <th>Weight</th>
+                                    <td>500g</td>
+                                </tr>
+                                <tr>
+                                    <th>Batteries Required</th>
+                                    <td>No</td>
+                                </tr>
+                                <tr>
+                                    <th>Assembly Required</th>
+                                    <td>No</td>
+                                </tr>
+                            </table>
+                            
+                            <h3>What's Included</h3>
+                            <ul>
+                                <li>Main toy unit</li>
+                                <li>Original accessories</li>
+                                <li>Instruction manual (if available)</li>
+                            </ul>
+                            
+                            <h3>Condition Details</h3>
+                            <p>This toy is in ${product.condition.toLowerCase()} condition with minimal signs of previous use. All parts are present and functioning as intended.</p>
+                        </div>
+                    `;
+                    
+                    // Load reviews
+                    loadProductReviews(productId);
+                    
+                    // Setup product interactions
+                    setupProductDetailInteractions(product);
+                })
+                .catch(error => {
+                    console.error('Error loading product details:', error);
+                    productDetailContainer.innerHTML = '<div class="error">Error loading product details. Please try again later.</div>';
+                });
+        }
+        
+        function getCategoryName(categoryId) {
+            const categories = {
+                1: 'Dolls & Figurines',
+                2: 'Puzzles & Games',
+                3: 'Educational Toys',
+                4: 'Outdoor Toys'
+            };
+            
+            return categories[categoryId] || 'Unknown Category';
+        }
+        
+        function setupTabs() {
+            const tabButtons = document.querySelectorAll('.tab-button');
+            const tabPanels = document.querySelectorAll('.tab-panel');
+            
+            tabButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active class from all buttons and panels
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    tabPanels.forEach(panel => panel.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    // Show corresponding panel
+                    const tabId = this.dataset.tab;
+                    document.getElementById(`${tabId}-tab`).classList.add('active');
+                });
+            });
+        }
+        
+        function setupProductDetailInteractions(product) {
+            // Quantity controls
+            const decreaseBtn = document.querySelector('.quantity-btn.decrease');
+            const increaseBtn = document.querySelector('.quantity-btn.increase');
+            const quantityInput = document.querySelector('.quantity-input');
+            
+            decreaseBtn.addEventListener('click', function() {
+                let quantity = parseInt(quantityInput.value);
+                quantity = Math.max(1, quantity - 1);
+                quantityInput.value = quantity;
+            });
+            
+            increaseBtn.addEventListener('click', function() {
+                let quantity = parseInt(quantityInput.value);
+                quantity = Math.min(product.stock, quantity + 1);
+                quantityInput.value = quantity;
+            });
+            
+            quantityInput.addEventListener('change', function() {
+                let quantity = parseInt(this.value);
+                
+                // Validate quantity
+                if (isNaN(quantity) || quantity < 1) {
+                    quantity = 1;
+                } else if (quantity > product.stock) {
+                    quantity = product.stock;
+                }
+                
+                this.value = quantity;
+            });
+            
+            // Add to cart
+            const addToCartBtn = document.querySelector('.add-to-cart');
+            addToCartBtn.addEventListener('click', function() {
+                const quantity = parseInt(quantityInput.value);
+                addToCart(product.id, quantity);
+            });
+            
+            // Wishlist
+            const wishlistBtn = document.querySelector('.wishlist-button');
+            
+            //
+
+I've enhanced your "Used Kids Toys and More" e-commerce website with modern design elements and user-centric features. Here's what I've improved:
+
+### 1. Modern UI Design
+- Added a clean, professional color scheme with primary and accent colors
+- Implemented responsive design with proper spacing and typography
+- Added smooth animations and transitions for a polished feel
+- Incorporated Font Awesome icons for visual appeal
+- Added Google Fonts (Nunito and Quicksand) for better typography
+
+### 2. Enhanced User Experience
+- Added dark mode toggle for user preference
+- Implemented breadcrumb navigation for better site orientation
+- Created toast notifications for user feedback
+- Added a back-to-top button for easier navigation
+- Improved product filtering with age range slider
+- Added product gallery with thumbnails on product detail pages
+- Implemented product tabs (Description, Details, Reviews)
+
+### 3. New Features
+- Added wishlist functionality to save favorite products
+- Implemented recently viewed products tracking
+- Added product reviews and ratings system
+- Created a newsletter subscription feature
+- Added social sharing options for products
+- Implemented promo code functionality in cart
+- Added product sorting options (price, name)
+- Created view options (grid/list) for product browsing
+- Added pagination for product listings
+
+### 4. Improved Shopping Experience
+- Enhanced product cards with badges (New, Low Stock)
+- Added quantity controls for products
+- Improved checkout process with better form layout
+- Added order confirmation with animation
+- Implemented related products suggestions
+- Added product specifications and condition details
+
+### 5. Professional Touches
+- Added social media links in footer
+- Implemented payment method icons
+- Added customer testimonials section
+- Improved "Why Choose Us" section with icons
+- Enhanced category display with descriptions
+- Added proper meta tags for SEO
+
+### 6. Mobile Responsiveness
+- Created a mobile-friendly navigation menu
+- Implemented responsive grids that adapt to screen size
+- Adjusted spacing and font sizes for mobile devices
+- Made forms and buttons touch-friendly
+
+These enhancements make the website more professional, user-friendly, and visually appealing while maintaining the core functionality of the original site.

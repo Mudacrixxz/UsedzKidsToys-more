@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Wishlist - Used Kids Toys and More</title>
+    <meta name="description" content="View and manage your saved favorite toys on your wishlist at Used Kids Toys and More.">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/premium-theme.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="images/logo.png" alt="Used Kids Toys and More" class="logo-image">
+            </a>
+            <button id="nav-toggle" class="mobile-nav-toggle">Menu</button>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="products.html">Shop</a>
+                <a href="cart.html">Cart <span id="cart-count" class="cart-count">0</span></a>
+                <a href="wishlist.html" class="active">Wishlist</a>
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+    
+    <section class="page-header">
+        <div class="container">
+            <h1>My Wishlist</h1>
+        </div>
+    </section>
+    
+    <section class="wishlist-section container">
+        <div id="wishlist-items" class="wishlist-items">
+            <div class="loading">Loading your wishlist...</div>
+            <!-- Wishlist items will be loaded here via JavaScript -->
+        </div>
+        
+        <div id="empty-wishlist" class="empty-state" style="display: none;">
+            <i class="fas fa-heart-broken fa-4x"></i>
+            <h2>Your wishlist is empty</h2>
+            <p>Save your favorite toys to your wishlist to find them easily later.</p>
+            <a href="products.html" class="btn btn-lg">Start Shopping</a>
+        </div>
+    </section>
+    
+    <section class="recommendations container">
+        <h2>You Might Also Like</h2>
+        <div id="recommended-products" class="grid">
+            <!-- Recommended products will be loaded via JavaScript -->
+            <div class="loading">Loading recommendations...</div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>Used Kids Toys</h3>
+                    <p>Quality pre-owned toys for children of all ages.</p>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Shop</h3>
+                    <ul>
+                        <li><a href="products.html?category=1">Dolls & Figurines</a></li>
+                        <li><a href="products.html?category=2">Puzzles & Games</a></li>
+                        <li><a href="products.html?category=3">Educational Toys</a></li>
+                        <li><a href="products.html?category=4">Outdoor Toys</a></li>
+                        <li><a href="products.html">All Products</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Information</h3>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="delivery.html">Delivery Information</a></li>
+                        <li><a href="returns.html">Returns Policy</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms & Conditions</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact</h3>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> info@usedkidstoys.com</li>
+                        <li><i class="fas fa-phone"></i> 0123 456 789</li>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Toy Street, London, UK</li>
+                    </ul>
+                    <div class="payment-methods">
+                        <i class="fab fa-cc-visa"></i>
+                        <i class="fab fa-cc-mastercard"></i>
+                        <i class="fab fa-cc-paypal"></i>
+                        <i class="fab fa-cc-apple-pay"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2025 Used Kids Toys and More. All rights reserved.
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Toast Container -->
+    <div id="toast-container" class="toast-container"></div>
+    
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="back-to-top" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+    
+    <script src="js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get wishlist from local storage
+            const wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+            const wishlistContainer = document.getElementById('wishlist-items');
+            const emptyWishlist = document.getElementById('empty-wishlist');
+            
+            // Display wishlist items or empty state
+            if (wishlist.length > 0) {
+                // Clear loading message
+                wishlistContainer.innerHTML = '';
+                
+                // Fetch product details for wishlist items
+                const fetchPromises = wishlist.map(productId => 
+                    fetch(`php/products.php?id=${productId}`)
+                        .then(response => response.json())
+                        .catch(error => console.error('Error fetching product:', error))
+                );
+                
+                // Process all products once fetched
+                Promise.all(fetchPromises)
+                    .then(products => {
+                        // Filter out any failed fetches
+                        const validProducts = products.filter(product => product);
+                        
+                        if (validProducts.length === 0) {
+                            showEmptyState();
+                            return;
+                        }
+                        
+                        // Create HTML for each product
+                        validProducts.forEach(product => {
+                            const wishlistItem = document.createElement('div');
+                            wishlistItem.className = 'wishlist-item';
+                            wishlistItem.innerHTML = `
+                                <div class="wishlist-image">
+                                    <img src="images/${product.image}" alt="${product.name}">
+                                </div>
+                                <div class="wishlist-details">
+                                    <h3>${product.name}</h3>
+                                    <div class="condition">${product.condition}</div>
+                                    <div class="price">£${parseFloat(product.price).toFixed(2)}</div>
+                                </div>
+                                <div class="wishlist-actions">
+                                    <button class="btn add-to-cart" data-id="${product.id}">
+                                        Add to Cart
+                                    </button>
+                                    <button class="btn-icon remove-from-wishlist" data-id="${product.id}">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            `;
+                            wishlistContainer.appendChild(wishlistItem);
+                        });
+                        
+                        // Setup event listeners for wishlist actions
+                        setupWishlistActions();
+                    })
+                    .catch(() => {
+                        wishlistContainer.innerHTML = '<p class="error">Error loading wishlist items. Please try again later.</p>';
+                    });
+            } else {
+                showEmptyState();
+            }
+            
+            // Load recommended products
+            loadRecommendedProducts();
+            
+            function showEmptyState() {
+                wishlistContainer.style.display = 'none';
+                emptyWishlist.style.display = 'flex';
+            }
+            
+            function setupWishlistActions() {
+                // Add to cart functionality
+                document.querySelectorAll('.add-to-cart').forEach(button => {
+                    button.addEventListener('click', function() {
+                        const productId = this.dataset.id;
+                        addToCart(productId);
+                        showToast('success', 'Added to Cart', 'Item has been added to your cart');
+                    });
+                });
+                
+                // Remove from wishlist functionality
+                document.querySelectorAll('.remove-from-wishlist').forEach(button => {
+                    button.addEventListener('click', function() {
+                        const productId = this.dataset.id;
+                        removeFromWishlist(productId);
+                        
+                        // Remove item from DOM
+                        this.closest('.wishlist-item').remove();
+                        
+                        // Show empty state if no items left
+                        if (document.querySelectorAll('.wishlist-item').length === 0) {
+                            showEmptyState();
+                        }
+                    });
+                });
+            }
+            
+            function addToCart(productId) {
+                let cart = JSON.parse(localStorage.getItem('cart')) || [];
+                
+                // Check if product is already in cart
+                const existingItem = cart.find(item => item.id === productId);
+                
+                if (existingItem) {
+                    existingItem.quantity += 1;
+                } else {
+                    cart.push({ id: productId, quantity: 1 });
+                }
+                
+                // Save updated cart
+                localStorage.setItem('cart', JSON.stringify(cart));
+                
+                // Update cart count
+                updateCartCount();
+            }
+            
+            function removeFromWishlist(productId) {
+                let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+                
+                // Remove product from wishlist
+                wishlist = wishlist.filter(id => id !== productId);
+                
+                // Save updated wishlist
+                localStorage.setItem('wishlist', JSON.stringify(wishlist));
+                
+                showToast('info', 'Removed from Wishlist', 'Item has been removed from your wishlist');
+            }
+            
+            function updateCartCount() {
+                const cart = JSON.parse(localStorage.getItem('cart')) || [];
+                const cartCount = document.getElementById('cart-count');
+                
+                if (cartCount) {
+                    const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+                    cartCount.textContent = totalItems;
+                }
+            }
+            
+            function loadRecommendedProducts() {
+                const recommendedContainer = document.getElementById('recommended-products');
+                
+                fetch('php/products.php?featured=1&limit=4')
+                    .then(response => response.json())
+                    .then(products => {
+                        recommendedContainer.innerHTML = '';
+                        
+                        products.forEach(product => {
+                            recommendedContainer.innerHTML += `
+                                <div class="product">
+                                    <div class="product-image-container">
+                                        <img src="images/${product.image}" alt="${product.name}">
+                                        <button class="wishlist-icon" data-id="${product.id}">
+                                            <i class="far fa-heart"></i>
+                                        </button>
+                                    </div>
+                                    <div class="product-info">
+                                        <h3>${product.name}</h3>
+                                        <div class="condition">${product.condition}</div>
+                                        <div class="price">£${parseFloat(product.price).toFixed(2)}</div>
+                                        <div class="product-actions">
+                                            <a href="product-detail.html?id=${product.id}" class="btn">View Details</a>
+                                            <button class="btn btn-accent add-to-cart" data-id="${product.id}">
+                                                <i class="fas fa-shopping-cart"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            `;
+                        });
+                        
+                        // Setup product interactions
+                        setupProductInteractions();
+                    })
+                    .catch(() => {
+                        recommendedContainer.innerHTML = '<p class="error">Error loading recommended products. Please try again later.</p>';
+                    });
+            }
+            
+            function showToast(type, title, message) {
+                const toastContainer = document.getElementById('toast-container');
+                const toast = document.createElement('div');
+                toast.className = `toast toast-${type}`;
+                toast.innerHTML = `
+                    <div class="toast-header">
+                        <strong>${title}</strong>
+                        <button type="button" class="toast-close" aria-label="Close">&times;</button>
+                    </div>
+                    <div class="toast-body">${message}</div>
+                `;
+                
+                toastContainer.appendChild(toast);
+                
+                // Auto remove after 5 seconds
+                setTimeout(() => {
+                    toast.classList.add('toast-removing');
+                    setTimeout(() => {
+                        toast.remove();
+                    }, 300);
+                }, 5000);
+                
+                // Close on click
+                toast.querySelector('.toast-close').addEventListener('click', function() {
+                    toast.classList.add('toast-removing');
+                    setTimeout(() => {
+                        toast.remove();
+                    }, 300);
+                });
+            }
+        });
+    </script>
+</body>
+</html> 

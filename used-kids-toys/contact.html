@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Used Kids Toys and More</title>
+    <meta name="description" content="Contact Used Kids Toys and More with questions, feedback, or support requests. We're here to help!">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/premium-theme.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="images/logo.png" alt="Used Kids Toys and More" class="logo-image">
+            </a>
+            <button id="nav-toggle" class="mobile-nav-toggle">Menu</button>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="products.html">Shop</a>
+                <a href="cart.html">Cart <span id="cart-count" class="cart-count">0</span></a>
+                <a href="wishlist.html">Wishlist</a>
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+    
+    <section class="page-header">
+        <div class="container">
+            <h1>Contact Us</h1>
+        </div>
+    </section>
+    
+    <section class="contact-section container">
+        <div class="contact-grid">
+            <div class="contact-info">
+                <h2>Get in Touch</h2>
+                <p>Have questions about our products, delivery, or returns? Need help with your order? We're here to assist you!</p>
+                
+                <div class="contact-details">
+                    <div class="contact-detail-item">
+                        <div class="icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="detail">
+                            <h3>Email</h3>
+                            <p><a href="mailto:info@usedkidstoys.com">info@usedkidstoys.com</a></p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-detail-item">
+                        <div class="icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="detail">
+                            <h3>Phone</h3>
+                            <p><a href="tel:01234567890">0123 456 7890</a></p>
+                            <p class="note">Monday to Friday: 9am - 5pm</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-detail-item">
+                        <div class="icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="detail">
+                            <h3>Address</h3>
+                            <p>123 Toy Street<br>London<br>UK</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="social-connect">
+                    <h3>Connect With Us</h3>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="contact-form-container">
+                <h2>Send Us a Message</h2>
+                <form id="contact-form" class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Your Name *</label>
+                        <input type="text" id="name" name="name" required>
+                        <div class="error-message" id="name-error"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" required>
+                        <div class="error-message" id="email-error"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone">
+                        <div class="error-message" id="phone-error"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subject">Subject *</label>
+                        <select id="subject" name="subject" required>
+                            <option value="">Select a subject</option>
+                            <option value="order">Order Inquiry</option>
+                            <option value="product">Product Question</option>
+                            <option value="return">Return/Refund</option>
+                            <option value="feedback">Feedback</option>
+                            <option value="other">Other</option>
+                        </select>
+                        <div class="error-message" id="subject-error"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Message *</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                        <div class="error-message" id="message-error"></div>
+                    </div>
+                    
+                    <div class="form-group checkbox-group">
+                        <input type="checkbox" id="privacy" name="privacy" required>
+                        <label for="privacy">I agree to the <a href="privacy.html">Privacy Policy</a> *</label>
+                        <div class="error-message" id="privacy-error"></div>
+                    </div>
+                    
+                    <div class="form-submit">
+                        <button type="submit" class="btn btn-lg">Send Message</button>
+                    </div>
+                    
+                    <div id="form-response" class="form-response"></div>
+                </form>
+            </div>
+        </div>
+    </section>
+    
+    <section class="container">
+        <div class="map-container">
+            <h2>Find Us</h2>
+            <div class="map">
+                <!-- Replace with your preferred map embed code -->
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d158857.83988763845!2d-0.24168007384287547!3d51.52855824887AllBullshit!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47d8a00baf21de75%3A0x52963a5addd52a99!2sLondon%2C%20UK!5e0!3m2!1sen!2sus!4v1656000000000!5m2!1sen!2sus" 
+                    width="100%" 
+                    height="450" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+        </div>
+    </section>
+    
+    <section class="faq-snippet container">
+        <h2>Frequently Asked Questions</h2>
+        <p>Looking for quick answers? Check our <a href="faq.html">FAQ section</a> for information about orders, shipping, returns and more.</p>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>Used Kids Toys</h3>
+                    <p>Quality pre-owned toys for children of all ages.</p>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Shop</h3>
+                    <ul>
+                        <li><a href="products.html?category=1">Dolls & Figurines</a></li>
+                        <li><a href="products.html?category=2">Puzzles & Games</a></li>
+                        <li><a href="products.html?category=3">Educational Toys</a></li>
+                        <li><a href="products.html?category=4">Outdoor Toys</a></li>
+                        <li><a href="products.html">All Products</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Information</h3>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="delivery.html">Delivery Information</a></li>
+                        <li><a href="returns.html">Returns Policy</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms & Conditions</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact</h3>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> info@usedkidstoys.com</li>
+                        <li><i class="fas fa-phone"></i> 0123 456 789</li>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Toy Street, London, UK</li>
+                    </ul>
+                    <div class="payment-methods">
+                        <i class="fab fa-cc-visa"></i>
+                        <i class="fab fa-cc-mastercard"></i>
+                        <i class="fab fa-cc-paypal"></i>
+                        <i class="fab fa-cc-apple-pay"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2025 Used Kids Toys and More. All rights reserved.
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Toast Container -->
+    <div id="toast-container" class="toast-container"></div>
+    
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="back-to-top" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+    
+    <script src="js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const contactForm = document.getElementById('contact-form');
+            
+            // Form validation
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Reset previous error messages
+                document.querySelectorAll('.error-message').forEach(el => {
+                    el.textContent = '';
+                });
+                
+                // Get form values
+                const name = document.getElementById('name').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const phone = document.getElementById('phone').value.trim();
+                const subject = document.getElementById('subject').value;
+                const message = document.getElementById('message').value.trim();
+                const privacy = document.getElementById('privacy').checked;
+                
+                // Validate inputs
+                let isValid = true;
+                
+                if (!name) {
+                    document.getElementById('name-error').textContent = 'Please enter your name';
+                    isValid = false;
+                }
+                
+                if (!email) {
+                    document.getElementById('email-error').textContent = 'Please enter your email address';
+                    isValid = false;
+                } else if (!isValidEmail(email)) {
+                    document.getElementById('email-error').textContent = 'Please enter a valid email address';
+                    isValid = false;
+                }
+                
+                if (phone && !isValidPhone(phone)) {
+                    document.getElementById('phone-error').textContent = 'Please enter a valid phone number';
+                    isValid = false;
+                }
+                
+                if (!subject) {
+                    document.getElementById('subject-error').textContent = 'Please select a subject';
+                    isValid = false;
+                }
+                
+                if (!message) {
+                    document.getElementById('message-error').textContent = 'Please enter your message';
+                    isValid = false;
+                } else if (message.length < 10) {
+                    document.getElementById('message-error').textContent = 'Your message is too short';
+                    isValid = false;
+                }
+                
+                if (!privacy) {
+                    document.getElementById('privacy-error').textContent = 'You must agree to the privacy policy';
+                    isValid = false;
+                }
+                
+                // If the form is valid, submit it
+                if (isValid) {
+                    // In a real application, you would send this data to your server
+                    // For demo purposes, we'll just show a success message
+                    
+                    // Display success message
+                    const formResponse = document.getElementById('form-response');
+                    formResponse.className = 'form-response success';
+                    formResponse.textContent = 'Thank you for your message! We will get back to you soon.';
+                    
+                    // Reset form
+                    contactForm.reset();
+                    
+                    // Show toast notification
+                    showToast('success', 'Message Sent', 'Thank you for contacting us. We will respond shortly.');
+                    
+                    // Hide success message after 5 seconds
+                    setTimeout(() => {
+                        formResponse.textContent = '';
+                        formResponse.className = 'form-response';
+                    }, 5000);
+                }
+            });
+            
+            // Form field validation helper functions
+            function isValidEmail(email) {
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return emailRegex.test(email);
+            }
+            
+            function isValidPhone(phone) {
+                // Basic phone validation - adjust as needed for your country format
+                const phoneRegex = /^[0-9\s\-\+\(\)]{8,15}$/;
+                return phoneRegex.test(phone);
+            }
+            
+            // Toast notification function
+            function showToast(type, title, message) {
+                const toastContainer = document.getElementById('toast-container');
+                const toast = document.createElement('div');
+                toast.className = `toast toast-${type}`;
+                toast.innerHTML = `
+                    <div class="toast-header">
+                        <strong>${title}</strong>
+                        <button type="button" class="toast-close" aria-label="Close">&times;</button>
+                    </div>
+                    <div class="toast-body">${message}</div>
+                `;
+                
+                toastContainer.appendChild(toast);
+                
+                // Auto remove after 5 seconds
+                setTimeout(() => {
+                    toast.classList.add('toast-removing');
+                    setTimeout(() => {
+                        toast.remove();
+                    }, 300);
+                }, 5000);
+                
+                // Close on click
+                toast.querySelector('.toast-close').addEventListener('click', function() {
+                    toast.classList.add('toast-removing');
+                    setTimeout(() => {
+                        toast.remove();
+                    }, 300);
+                });
+            }
+            
+            // Update cart count on page load
+            function updateCartCount() {
+                const cart = JSON.parse(localStorage.getItem('cart')) || [];
+                const cartCount = document.getElementById('cart-count');
+                
+                if (cartCount) {
+                    const totalItems = cart.reduce((total, item) => total + (item.quantity || 0), 0);
+                    cartCount.textContent = totalItems;
+                }
+            }
+            
+            // Initialize cart count
+            updateCartCount();
+        });
+    </script>
+</body>
+</html> 

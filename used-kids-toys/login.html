@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Used Kids Toys and More</title>
+    <meta name="description" content="Login to your Used Kids Toys account to track orders, manage your wishlist, and enjoy faster checkout.">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/premium-theme.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <style>
+        .auth-container {
+            max-width: 500px;
+            margin: 2rem auto 4rem;
+            padding: 2.5rem;
+            border-radius: 8px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            background-color: var(--bg-color);
+        }
+        
+        .auth-tabs {
+            display: flex;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .auth-tab {
+            flex: 1;
+            padding: 1rem;
+            text-align: center;
+            cursor: pointer;
+            font-weight: 700;
+            transition: all 0.2s;
+            color: var(--text-muted);
+        }
+        
+        .auth-tab.active {
+            color: var(--accent-color);
+            border-bottom: 3px solid var(--accent-color);
+        }
+        
+        .auth-form h2 {
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            background-color: var(--input-bg);
+            color: var(--text-color);
+            font-family: inherit;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 3px rgba(52, 98, 216, 0.2);
+        }
+        
+        .form-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1.5rem;
+        }
+        
+        .remember-me {
+            display: flex;
+            align-items: center;
+        }
+        
+        .remember-me input {
+            margin-right: 0.5rem;
+        }
+        
+        .social-login {
+            margin-top: 2rem;
+            text-align: center;
+        }
+        
+        .social-login p {
+            margin-bottom: 1rem;
+            position: relative;
+        }
+        
+        .social-login p:before, 
+        .social-login p:after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 40%;
+            height: 1px;
+            background-color: var(--border-color);
+        }
+        
+        .social-login p:before {
+            left: 0;
+        }
+        
+        .social-login p:after {
+            right: 0;
+        }
+        
+        .social-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+        
+        .social-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            border: 1px solid var(--border-color);
+            transition: all 0.2s;
+            font-size: 1.2rem;
+        }
+        
+        .social-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .social-btn.facebook:hover { 
+            color: #4267B2;
+            border-color: #4267B2;
+        }
+        
+        .social-btn.google:hover {
+            color: #DB4437;
+            border-color: #DB4437;
+        }
+        
+        .social-btn.apple:hover {
+            color: #000;
+            border-color: #000;
+        }
+        
+        .form-tab-content {
+            display: none;
+        }
+        
+        .form-tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="images/logo.png" alt="Used Kids Toys and More" class="logo-image">
+            </a>
+            <button id="nav-toggle" class="mobile-nav-toggle">Menu</button>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="products.html">Shop</a>
+                <a href="cart.html">Cart <span id="cart-count" class="cart-count">0</span></a>
+                <a href="wishlist.html">Wishlist</a>
+                <a href="login.html" class="active">Login</a>
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+    
+    <section class="container">
+        <div class="page-header">
+            <h1>Account Access</h1>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li><a href="index.html">Home</a></li>
+                    <li>Login / Register</li>
+                </ol>
+            </nav>
+        </div>
+
+        <div class="auth-container">
+            <div class="auth-tabs">
+                <div class="auth-tab active" data-tab="login">Login</div>
+                <div class="auth-tab" data-tab="register">Register</div>
+            </div>
+
+            <div class="form-tab-content active" id="login-form">
+                <div class="auth-form">
+                    <h2>Welcome Back</h2>
+                    <form action="php/login.php" method="post">
+                        <div class="form-group">
+                            <label for="login-email">Email Address</label>
+                            <input type="email" id="login-email" name="email" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="login-password">Password</label>
+                            <input type="password" id="login-password" name="password" class="form-control" required>
+                        </div>
+                        <div class="form-footer">
+                            <div class="remember-me">
+                                <input type="checkbox" id="remember-me" name="remember">
+                                <label for="remember-me">Remember me</label>
+                            </div>
+                            <a href="#" class="forgot-password">Forgot Password?</a>
+                        </div>
+                        <button type="submit" class="btn btn-accent btn-block">Login</button>
+                    </form>
+                </div>
+                
+                <div class="social-login">
+                    <p>Or login with</p>
+                    <div class="social-buttons">
+                        <a href="#" class="social-btn facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-btn google">
+                            <i class="fab fa-google"></i>
+                        </a>
+                        <a href="#" class="social-btn apple">
+                            <i class="fab fa-apple"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-tab-content" id="register-form">
+                <div class="auth-form">
+                    <h2>Create an Account</h2>
+                    <form action="php/register.php" method="post">
+                        <div class="form-group">
+                            <label for="reg-name">Full Name</label>
+                            <input type="text" id="reg-name" name="name" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="reg-email">Email Address</label>
+                            <input type="email" id="reg-email" name="email" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="reg-password">Password</label>
+                            <input type="password" id="reg-password" name="password" class="form-control" 
+                                   pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" 
+                                   title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" 
+                                   required>
+                            <small class="form-text text-muted">Password must be at least 8 characters with numbers, uppercase and lowercase letters.</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="reg-confirm-password">Confirm Password</label>
+                            <input type="password" id="reg-confirm-password" name="confirm_password" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <div class="remember-me">
+                                <input type="checkbox" id="terms" name="terms" required>
+                                <label for="terms">I agree to the <a href="terms.html">Terms & Conditions</a> and <a href="privacy.html">Privacy Policy</a></label>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-accent btn-block">Register</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>Used Kids Toys</h3>
+                    <p>Quality pre-owned toys for children of all ages.</p>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Shop</h3>
+                    <ul>
+                        <li><a href="products.html?category=1">Dolls & Figurines</a></li>
+                        <li><a href="products.html?category=2">Puzzles & Games</a></li>
+                        <li><a href="products.html?category=3">Educational Toys</a></li>
+                        <li><a href="products.html?category=4">Outdoor Toys</a></li>
+                        <li><a href="products.html">All Products</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Information</h3>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="delivery.html">Delivery Information</a></li>
+                        <li><a href="returns.html">Returns Policy</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms & Conditions</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact</h3>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> info@usedkidstoys.com</li>
+                        <li><i class="fas fa-phone"></i> 0123 456 789</li>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Toy Street, London, UK</li>
+                    </ul>
+                    <div class="payment-methods">
+                        <i class="fab fa-cc-visa"></i>
+                        <i class="fab fa-cc-mastercard"></i>
+                        <i class="fab fa-cc-paypal"></i>
+                        <i class="fab fa-cc-apple-pay"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2025 Used Kids Toys and More. All rights reserved.
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Toast Container -->
+    <div id="toast-container" class="toast-container"></div>
+    
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="back-to-top" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+    
+    <script src="js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabs = document.querySelectorAll('.auth-tab');
+            const tabContents = document.querySelectorAll('.form-tab-content');
+            
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    const tabId = this.getAttribute('data-tab');
+                    
+                    // Remove active class from all tabs and contents
+                    tabs.forEach(t => t.classList.remove('active'));
+                    tabContents.forEach(c => c.classList.remove('active'));
+                    
+                    // Add active class to current tab and content
+                    this.classList.add('active');
+                    document.getElementById(`${tabId}-form`).classList.add('active');
+                });
+            });
+            
+            // Password validation
+            const password = document.getElementById('reg-password');
+            const confirmPassword = document.getElementById('reg-confirm-password');
+            
+            function validatePassword() {
+                if (password.value !== confirmPassword.value) {
+                    confirmPassword.setCustomValidity('Passwords do not match');
+                } else {
+                    confirmPassword.setCustomValidity('');
+                }
+            }
+            
+            if (password && confirmPassword) {
+                password.addEventListener('change', validatePassword);
+                confirmPassword.addEventListener('keyup', validatePassword);
+            }
+        });
+    </script>
+</body>
+</html> 

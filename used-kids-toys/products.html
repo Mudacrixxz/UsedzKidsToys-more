@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop Toys - Used Kids Toys and More</title>
+    <meta name="description" content="Browse our extensive collection of quality used toys for kids. Filter by category, age, and price to find the perfect toy.">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/premium-theme.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="images/logo.png" alt="Used Kids Toys and More" class="logo-image">
+            </a>
+            <button id="nav-toggle" class="mobile-nav-toggle">Menu</button>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="products.html">Shop</a>
+                <a href="cart.html">Cart <span id="cart-count" class="cart-count">0</span></a>
+                <a href="wishlist.html">Wishlist</a>
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+    
+    <section class="container">
+        <div class="breadcrumbs">
+            <a href="index.html">Home</a>
+            <span class="separator">/</span>
+            <span class="current">Shop</span>
+        </div>
+        
+        <h1>Shop Toys</h1>
+        
+        <!-- Product filters -->
+        <div class="filters">
+            <form id="filter-form">
+                <div class="filter-group">
+                    <label for="category">Category:</label>
+                    <select id="category" name="category">
+                        <option value="">All Categories</option>
+                        <option value="1">Dolls & Figurines</option>
+                        <option value="2">Puzzles & Games</option>
+                        <option value="3">Educational Toys</option>
+                        <option value="4">Outdoor Toys</option>
+                    </select>
+                    
+                    <label for="condition">Condition:</label>
+                    <select id="condition" name="condition">
+                        <option value="">Any Condition</option>
+                        <option value="Excellent">Excellent</option>
+                        <option value="Very Good">Very Good</option>
+                        <option value="Good">Good</option>
+                        <option value="Fair">Fair</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label for="price-min">Price Range:</label>
+                    <input type="number" id="price-min" name="price_min" placeholder="Min £" min="0" step="0.01">
+                    <span>to</span>
+                    <input type="number" id="price-max" name="price_max" placeholder="Max £" min="0" step="0.01">
+                </div>
+                
+                <div class="filter-group">
+                    <label>Age Range:</label>
+                    <div class="age-range-slider">
+                        <div class="slider">
+                            <div class="slider-fill"></div>
+                            <div class="slider-handle min-handle"></div>
+                            <div class="slider-handle max-handle"></div>
+                        </div>
+                        <div class="slider-values">
+                            <span class="min-value">0</span>
+                            <span class="max-value">12</span>
+                        </div>
+                        <input type="hidden" id="age-min" name="age_min">
+                        <input type="hidden" id="age-max" name="age_max">
+                    </div>
+                </div>
+                
+                <div class="filter-group">
+                    <label for="search">Search:</label>
+                    <input type="text" id="search" name="search" placeholder="Search by name or description">
+                    <button type="submit" class="btn">Apply Filters</button>
+                    <button type="button" class="btn btn-secondary" onclick="resetFilters()">Reset</button>
+                </div>
+            </form>
+        </div>
+        
+        <!-- Sort options -->
+        <div class="sort-options">
+            <label for="sort">Sort by:</label>
+            <select id="sort" onchange="sortProducts(this.value)">
+                <option value="default">Featured</option>
+                <option value="price-low">Price: Low to High</option>
+                <option value="price-high">Price: High to Low</option>
+                <option value="name-asc">Name: A to Z</option>
+                <option value="name-desc">Name: Z to A</option>
+            </select>
+            
+            <div class="view-options">
+                <button class="view-option active" data-view="grid" aria-label="Grid view">
+                    <i class="fas fa-th"></i>
+                </button>
+                <button class="view-option" data-view="list" aria-label="List view">
+                    <i class="fas fa-list"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Product grid -->
+        <div id="product-grid" class="grid">
+            <!-- Products will be loaded via JavaScript -->
+            <div class="loading">Loading products...</div>
+        </div>
+        
+        <!-- Pagination -->
+        <div class="pagination">
+            <button class="pagination-prev" disabled>
+                <i class="fas fa-chevron-left"></i> Previous
+            </button>
+            <div class="pagination-numbers">
+                <button class="active">1</button>
+                <button>2</button>
+                <button>3</button>
+            </div>
+            <button class="pagination-next">
+                Next <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+    </section>
+    
+    <!-- Product detail modal -->
+    <div id="product-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div id="product-detail">
+                <!-- Product details will be loaded here -->
+            </div>
+        </div>
+    </div>
+    
+    <!-- Newsletter -->
+    <section class="newsletter">
+        <div class="container">
+            <h2>Join Our Newsletter</h2>
+            <p>Subscribe to receive updates on new arrivals, special offers and other discount information.</p>
+            <form class="newsletter-form">
+                <input type="email" placeholder="Your email address" required>
+                <button type="submit" class="btn btn-accent">Subscribe</button>
+            </form>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>Used Kids Toys</h3>
+                    <p>Quality pre-owned toys for children of all ages.</p>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Shop</h3>
+                    <ul>
+                        <li><a href="products.html?category=1">Dolls & Figurines</a></li>
+                        <li><a href="products.html?category=2">Puzzles & Games</a></li>
+                        <li><a href="products.html?category=3">Educational Toys</a></li>
+                        <li><a href="products.html?category=4">Outdoor Toys</a></li>
+                        <li><a href="products.html">All Products</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Information</h3>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="delivery.html">Delivery Information</a></li>
+                        <li><a href="returns.html">Returns Policy</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms & Conditions</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact</h3>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> info@usedkidstoys.com</li>
+                        <li><i class="fas fa-phone"></i> 0123 456 789</li>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Toy Street, London, UK</li>
+                    </ul>
+                    <div class="payment-methods">
+                        <i class="fab fa-cc-visa"></i>
+                        <i class="fab fa-cc-mastercard"></i>
+                        <i class="fab fa-cc-paypal"></i>
+                        <i class="fab fa-cc-apple-pay"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2025 Used Kids Toys and More. All rights reserved.
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Toast Container -->
+    <div id="toast-container" class="toast-container"></div>
+    
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="back-to-top" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+    
+    <script src="js/main.js"></script>
+    <script>
+        // Parse URL parameters to set initial filters
+        document.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const categoryParam = urlParams.get('category');
+            const priceMinParam = urlParams.get('price_min');
+            const priceMaxParam = urlParams.get('price_max');
+            const searchParam = urlParams.get('search');
+            const productIdParam = urlParams.get('id');
+            
+            // Set form values based on URL parameters
+            if (categoryParam) {
+                document.getElementById('category').value = categoryParam;
+            }
+            
+            if (priceMinParam) {
+                document.getElementById('price-min').value = priceMinParam;
+            }
+            
+            if (priceMaxParam) {
+                document.getElementById('price-max').value = priceMaxParam;
+            }
+            
+            if (searchParam) {
+                document.getElementById('search').value = searchParam;
+            }
+            
+            // If product ID is in URL, show product detail modal
+            if (productIdParam) {
+                showProductDetail(productIdParam);
+            }
+            
+            // Build filters object
+            const filters = {};
+            if (categoryParam) filters.category = categoryParam;
+            if (priceMinParam) filters.price_min = priceMinParam;
+            if (priceMaxParam) filters.price_max = priceMaxParam;
+            if (searchParam) filters.search = searchParam;
+            
+            // Load products with filters
+            loadProducts(filters);
+            
+            // Setup view options
+            setupViewOptions();
+            
+            // Setup pagination
+            setupPagination();
+            
+            // Handle newsletter form submission
+            const newsletterForm = document.querySelector('.newsletter-form');
+            if (newsletterForm) {
+                newsletterForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const email = this.querySelector('input[type="email"]').value;
+                    
+                    // Here you would normally send this to your backend
+                    // For demo purposes, we'll just show a success message
+                    showToast('success', 'Subscribed!', `Thank you for subscribing with ${email}`);
+                    this.reset();
+                });
+            }
+        });
+        
+        function setupViewOptions() {
+            const viewOptions = document.querySelectorAll('.view-option');
+            const productGrid = document.getElementById('product-grid');
+            
+            viewOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    // Remove active class from all options
+                    viewOptions.forEach(opt => opt.classList.remove('active'));
+                    
+                    // Add active class to clicked option
+                    this.classList.add('active');
+                    
+                    // Update grid view
+                    const view = this.dataset.view;
+                    if (view === 'grid') {
+                        productGrid.className = 'grid';
+                    } else {
+                        productGrid.className = 'list';
+                    }
+                });
+            });
+        }
+        
+        function setupPagination() {
+            const paginationNumbers = document.querySelectorAll('.pagination-numbers button');
+            const prevButton = document.querySelector('.pagination-prev');
+            const nextButton = document.querySelector('.pagination-next');
+            
+            // Set up pagination number clicks
+            paginationNumbers.forEach((button, index) => {
+                button.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    paginationNumbers.forEach(btn => btn.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    // Enable/disable prev/next buttons
+                    prevButton.disabled = index === 0;
+                    nextButton.disabled = index === paginationNumbers.length - 1;
+                    
+                    // Load products for this page
+                    // In a real implementation, you would pass the page number to your loadProducts function
+                    loadProducts({page: index + 1});
+                    
+                    // Scroll to top of products
+                    window.scrollTo({
+                        top: document.querySelector('.filters').offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                });
+            });
+            
+            // Set up prev button
+            prevButton.addEventListener('click', function() {
+                const activeButton = document.querySelector('.pagination-numbers button.active');
+                const activeIndex = Array.from(paginationNumbers).indexOf(activeButton);
+                
+                if (activeIndex > 0) {
+                    paginationNumbers[activeIndex - 1].click();
+                }
+            });
+            
+            // Set up next button
+            nextButton.addEventListener('click', function() {
+                const activeButton = document.querySelector('.pagination-numbers button.active');
+                const activeIndex = Array.from(paginationNumbers).indexOf(activeButton);
+                
+                if (activeIndex < paginationNumbers.length - 1) {
+                    paginationNumbers[activeIndex + 1].click();
+                }
+            });
+        }
+        
+        function sortProducts(sortOption) {
+            // In a real implementation, you would pass the sort option to your backend
+            // For demo purposes, we'll just reload the products
+            loadProducts({sort: sortOption});
+        }
+    </script>
+</body>
+</html>
